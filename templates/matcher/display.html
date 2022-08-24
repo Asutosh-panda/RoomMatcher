@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="display d-flex">
+{% for student in students %}
+<div class="card mx-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Name :  {{student.first_name}}  {{student.last_name}}</h5>
+     
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Branch : {{student.branch}}</li>
+      <li class="list-group-item">Hobby  : {{student.hobby}}</li>
+      <li class="list-group-item">Home   : {{student.home}}</li>
+      <li class="list-group-item">Desc   :{{student.desc}}</li>
+    </ul>
+    <div class="card-body">
+
+      <a href="{% url 'add' student.sic %}"  class="card-link">Request</a>
+      {% comment %} <a href="#" class="card-link">Request</a> {% endcomment %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock body %}

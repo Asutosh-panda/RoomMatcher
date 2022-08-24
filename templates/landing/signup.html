@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h3">Sin up</h3>
+                </div>
+                <div class="card-body">
+                    {%if messages %}
+                        {% for message in messages  %}
+                            <p class={{message.tags}}>{{message}}</p>
+                        {% endfor %}
+                    {%endif%}
+                    <form action={% url 'signup' %} method = "post"  >
+                        {% csrf_token %}
+                    {% comment %} <div class="mb-1">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id ="name" class="form-control w-100">
+                        <label for="name_error" id = "name_error" class="text-danger"></label>
+                    </div> {% endcomment %}
+
+                    {% comment %} <div class="mb-1">
+                        <label for="last_name">last name</label>
+                        <input type="text" name="last_name" id ="last_name" class="form-control w-100">
+                        <label for="last_name_error" id = "last_name_error" class="text-danger"></label>
+                    </div> {% endcomment %}
+
+                    {% comment %} <div class="mb-1">
+                        <label for="email">e mail</label>
+                        <input type="text" name="email" id ="email" class="form-control w-100">
+                        <label for="text" id = "text" class="text-danger"></label>
+                        <label for="email_error" id = "email_error" class="text-danger"></label>
+                    </div> {% endcomment %}
+
+                    <div class="mb-1">
+                        <label for="sic">SIC number</label>
+                        <input type="text" name="sic" id ="sic" class="form-control w-100">
+                        <label for="sic_error" id = "sic_error" class="text-danger"></label>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="desc">Description</label>
+                        <textarea name="desc" id="desc" cols="50" rows="5"></textarea>
+                        <label for="desc_error" id = "desc_error" class="text-danger"></label>
+                    </div> 
+
+                     <div class="mb-1">
+                        <label for="hobby">Hobby</label>
+                        <input type="text" name="hobby" id ="hobby" class="form-control w-100">
+                        <label for="hobby_error" id = "hobby_error" class="text-danger"></label>
+                    </div>      
+
+                    <div class="mb-1">
+                        <label for="password">password</label>
+                        <input type="Password" name="password" id ="password" class="form-control w-100">
+                        <label for="password_error" id = "password_error" class="text-danger"></label>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="password2">Confirm password</label>
+                        <input type="Password" name="password2" id ="password2" class="form-control w-100">
+                        <label for="password2_error" id = "password2_error" class="text-danger"></label>
+                    </div>
+                    <input type = "submit" value="Sign Up" class="btn btn-primary mx-auto d-flex justify-center">
+                </form>
+                
+                </div>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+{% block extrajs %}
+    {% comment %} <script src="{% static 'js/form-validator.js' %}"></script> {% endcomment %}
+{% endblock extrajs %}

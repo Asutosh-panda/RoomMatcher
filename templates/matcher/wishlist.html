@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<h3 class="mx-2"> Wishlist :</h3>
+<div class="display d-flex my-2">
+{% for student in students %}
+<div class="card mx-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{student.first_name}}  {{student.last_name}}</h5>
+     
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Branch : {{student.branch}}</li>
+      <li class="list-group-item">Hobby  : {{student.hobby}}</li>
+      <li class="list-group-item">Home   : {{student.home}}</li>
+      <li class="list-group-item">Desc   :{{student.desc}}</li>
+    </ul>
+    <div class="card-body">
+
+      <a href="{% url 'remove' student.sic %}"  class="card-link">Remove</a>
+      {% comment %} <a href="#" class="card-link">Request</a> {% endcomment %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="my-4">
+ <h3 class="mx-2">Matched List :</h3>
+ {% if students %}
+ <div class="display d-flex my-2">
+    {% for student in matches %}
+    <div class="card mx-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{student.first_name}}  {{student.last_name}}</h5>
+         
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Branch : {{student.branch}}</li>
+          <li class="list-group-item">Hobby  : {{student.hobby}}</li>
+          <li class="list-group-item">Home   : {{student.home}}</li>
+          <li class="list-group-item">Desc   :{{student.desc}}</li>
+        </ul>
+        <div class="card-body">
+    
+          <a href="{% url 'remove' student.sic %}"  class="card-link">Remove</a>
+          {% comment %} <a href="#" class="card-link">Request</a> {% endcomment %}
+        </div>
+      </div>
+      {% endfor %}
+ {% else %}
+    <h3> Sorry,no match</h3>
+ {% endif %}
+
+
+
+{% endblock body %}
+

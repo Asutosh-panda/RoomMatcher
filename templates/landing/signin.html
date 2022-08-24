@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h3">Sin in</h3>
+                </div>
+                <div class="card-body">
+                    {%if messages %}
+                        {% for message in messages  %}
+                            <p class={{message.tags}}>{{message}}</p>
+                        {% endfor %}
+                    {%endif%}
+                    <form action={% url 'signin' %} method = "post"  >
+                        {% csrf_token %}
+                   
+
+                    <div class="mb-1">
+                        <label for="sic">SIC number</label>
+                        <input type="text" name="sic" id ="sic" class="form-control w-100">
+                        <label for="sic_error" id = "sic_error" class="text-danger"></label>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="password">password</label>
+                        <input type="Password" name="password" id ="password" class="form-control w-100">
+                        <label for="password_error" id = "password_error" class="text-danger"></label>
+                    </div>
+
+                   
+                    <input type = "submit" value="Sign In" class="btn btn-primary mx-auto d-flex justify-center">
+                </form>
+                
+                </div>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+{% block extrajs %}
+{% endblock extrajs %}

@@ -27,7 +27,7 @@
 
 <div class="my-4">
  <h3 class="mx-2">Matched List :</h3>
- {% if students %}
+ {% if matches %}
  <div class="display d-flex my-2">
     {% for student in matches %}
     <div class="card mx-2" style="width: 18rem;">
@@ -40,10 +40,21 @@
           <li class="list-group-item">Hobby  : {{student.hobby}}</li>
           <li class="list-group-item">Home   : {{student.home}}</li>
           <li class="list-group-item">Desc   :{{student.desc}}</li>
+          <li class="list-group-item">Status   :
+            {% if student.status %}
+                  Pending
+                  {% else %}
+                   Not confirmed
+            {% endif %}
+            </li>
+
         </ul>
         <div class="card-body">
     
-          <a href="{% url 'remove' student.sic %}"  class="card-link">Remove</a>
+          <a href="{% url 'remove' student.sic %}"  class="card-link">Withdraw</a>
+             <a href="{% url 'confirm' student.sic %}" class="card-link">Confirm</a>
+             
+
           {% comment %} <a href="#" class="card-link">Request</a> {% endcomment %}
         </div>
       </div>

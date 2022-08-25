@@ -2,5 +2,32 @@
 {% load static %}
 {% block body %}
 
-<h1>Matched :</h1>
+<div class="my-4">
+    <h3 class="mx-2">Matched List :</h3>
+    {% if students %}
+    <div class="display d-flex my-2">
+       {% for student in students %}
+       <div class="card mx-2" style="width: 18rem;">
+           <div class="card-body">
+             <h5 class="card-title">{{student.first_name}}  {{student.last_name}}</h5>
+            
+           </div>
+           <ul class="list-group list-group-flush">
+             <li class="list-group-item">Branch : {{student.branch}}</li>
+             <li class="list-group-item">Hobby  : {{student.hobby}}</li>
+             <li class="list-group-item">Home   : {{student.home}}</li>
+             <li class="list-group-item">Desc   :{{student.desc}}</li>
+           </ul>
+           <div class="card-body">
+       
+             <a href="{% url 'remove' student.sic %}"  class="card-link">Withdraw</a>
+             <a href="{% url 'confirm' student.sic %}" class="card-link">Confirm</a>
+             {% comment %} <a href="#" class="card-link">Request</a> {% endcomment %}
+           </div>
+         </div>
+         {% endfor %}
+    {% else %}
+       <h3> Sorry,no match</h3>
+    {% endif %}
+{% endblock body %}
  
